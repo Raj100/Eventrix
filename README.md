@@ -134,10 +134,6 @@ See [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) for detailed deployment instruc
 4. Push to the branch
 5. Create a Pull Request
 
-## License
-
-MIT License - see LICENSE file for details
-
 ## Support
 
 For issues and questions:
