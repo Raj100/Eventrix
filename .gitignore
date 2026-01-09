@@ -1,0 +1,102 @@
+# Python-specific ignores
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env
+.env.*
+pip-selfcheck.json
+# Ignore specific virtualenv files if they exist outside the main venv folder
+bin/
+include/
+lib/
+share/
+
+# Django/Flask specific (if applicable)
+*.log
+local_settings.py
+db.sqlite3
+/media
+/static
+
+# Node.js, Next.js, and React Native common ignores
+# Dependencies
+node_modules/
+/web/node_modules # if web is a subdir
+/mobile/node_modules # if mobile is a subdir
+
+# Testing
+/coverage
+/.nyc_output
+/test/__results__
+/assets # commonly generated
+
+# Next.js specific
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+# include one lock file (e.g., package-lock.json) for consistency across environments; don't ignore all
+
+# React Native specific (Android and iOS build artifacts)
+# Android
+/android/build/
+/android/.gradle/
+/android/local.properties
+/android/*.iml
+/android/app/build/
+/android/app/*.iml
+# If the entire android or ios directory is generated, you might ignore them, but generally you only ignore the *build* artifacts
+
+# iOS/Xcode
+/ios/build/
+/ios/DerivedData/
+/ios/*.ipa
+/ios/*.xcarchive
+/ios/*.xcuserstate
+/ios/*.xcscheme
+/ios/*.pbxuser
+/ios/Pods/
+/ios/Podfile.lock
+# Bundle artifacts
+*.jsbundle
+# Ensure assets aren't checked in if they're generated automatically
+
+# Editor/OS specific
+# Visual Studio Code
+.vscode/
+
+# JetBrains IDEs (PyCharm, WebStorm, Android Studio)
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db

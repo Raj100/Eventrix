@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Eventrix",
+    "slug": "eventrix",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.eventrix.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1a1a1a"
+      },
+      "package": "com.eventrix.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to personalize your custom designs.",
+          "cameraPermission": "The app uses your camera to capture designs."
+        }
+      ],
+      "expo-router"
+    ],
+    "scheme": "eventrix"
+  }
+}
