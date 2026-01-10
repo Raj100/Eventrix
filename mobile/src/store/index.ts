@@ -1,3 +1,3 @@
 export { useCartStore, type CartItem } from "./useCartStore"
 export { useUserStore, type User } from "./useUserStore"
-export { useProductStore, type Product } from "./useProductStore"
+export { useProductStore, type Product, type Category } from "./useProductStore"

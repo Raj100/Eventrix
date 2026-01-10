@@ -1,5 +1,6 @@
 import { create } from "zustand"
-import { persist } from "zustand/middleware"
+import { persist, createJSONStorage } from "zustand/middleware"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 export interface CartItem {
   id: string
@@ -18,24 +19,27 @@ interface CartStore {
   removeItem: (id: string) => void
   updateQuantity: (id: string, quantity: number) => void
   clearCart: () => void
-  calculateTotal: () => void
 }
 
 export const useCartStore = create<CartStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       items: [],
       total: 0,
 
       addItem: (item) =>
         set((state) => {
           const existingItem = state.items.find((i) => i.id === item.id)
-          let newItems
+
+          let newItems: CartItem[]
           if (existingItem) {
-            newItems = state.items.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i))
+            newItems = state.items.map((i) =>
+              i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i,
+            )
           } else {
             newItems = [...state.items, item]
           }
+
           const total = newItems.reduce((sum, i) => sum + i.price * i.quantity, 0)
           return { items: newItems, total }
         }),
@@ -49,26 +53,23 @@ export const useCartStore = create<CartStore>()(
 
       updateQuantity: (id, quantity) =>
         set((state) => {
+          let newItems: CartItem[]
+
           if (quantity <= 0) {
-            const newItems = state.items.filter((i) => i.id !== id)
-            const total = newItems.reduce((sum, i) => sum + i.price * i.quantity, 0)
-            return { items: newItems, total }
+            newItems = state.items.filter((i) => i.id !== id)
+          } else {
+            newItems = state.items.map((i) => (i.id === id ? { ...i, quantity } : i))
           }
-          const newItems = state.items.map((i) => (i.id === id ? { ...i, quantity } : i))
+
           const total = newItems.reduce((sum, i) => sum + i.price * i.quantity, 0)
           return { items: newItems, total }
         }),
 
       clearCart: () => set({ items: [], total: 0 }),
-
-      calculateTotal: () =>
-        set((state) => {
-          const total = state.items.reduce((sum, i) => sum + i.price * i.quantity, 0)
-          return { total }
-        }),
     }),
     {
       name: "eventrix-cart",
+      storage: createJSONStorage(() => AsyncStorage),
     },
   ),
 )

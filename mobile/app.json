@@ -12,13 +12,16 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#1a1a1a"
       },
-      "package": "com.eventrix.app"
+      "package": "com.eventrix.app",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.png"
     },
     "plugins": [
       [
@@ -30,6 +33,13 @@
       ],
       "expo-router"
     ],
-    "scheme": "eventrix"
+    "scheme": "eventrix",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "8ff84387-8660-404e-a482-227cc921050a"
+      }
+    },
+    "owner": "raj1000"
   }
 }
